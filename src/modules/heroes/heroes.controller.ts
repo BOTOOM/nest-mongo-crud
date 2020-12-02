@@ -1,6 +1,10 @@
 import { Controller, Post, Get, Put, Delete, Param, Body } from '@nestjs/common';
 import { HeroesService } from './heroes.service';
+import { ApiBody, ApiConsumes, ApiProperty, ApiTags } from '@nestjs/swagger';
+import { CreateHeroeDto } from './dto/create-heroe.dto';
 
+
+@ApiTags('heroes')
 @Controller('heroes')
 export class HeroesController {
     constructor( private readonly heroesService: HeroesService ) {
@@ -15,9 +19,10 @@ export class HeroesController {
     getOne( @Param('idRegistro') id: string ) {
     }
 
+    // @ApiBody({ type: CreateHeroeDto })
     @Post()
-    post(@Body() datosHeroe: any) {
-        return this.heroesService.post(datosHeroe)
+    post(@Body() CreateHeroeDto: CreateHeroeDto) {
+        return this.heroesService.post(CreateHeroeDto)
     }
 
     @Put(':idRegistro')
