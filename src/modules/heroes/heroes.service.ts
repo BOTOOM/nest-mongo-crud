@@ -13,7 +13,11 @@ export class HeroesService {
         return createdRubro.save();
     }
 
-    async findAll(): Promise<Heroes[]> {
-        return this.heroeModel.find().exec();
-      }
+    async getAll(): Promise<Heroes[]> {
+        return await this.heroeModel.find().exec();
+    }
+
+    async getById(idRegistro: string): Promise<Heroes> {
+        return await this.heroeModel.findById(idRegistro).exec()
+    }
 }

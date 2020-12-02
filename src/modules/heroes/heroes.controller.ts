@@ -13,10 +13,12 @@ export class HeroesController {
 
     @Get('GetAll')
     getAll() {
+        return this.heroesService.getAll()
     }
 
-    @Get(':idRegistro')
-    getOne( @Param('idRegistro') id: string ) {
+    @Get('GetById:idRegistro')
+    getById( @Param('idRegistro') id: string ) {
+        return this.heroesService.getById(id)
     }
 
     // @ApiBody({ type: CreateHeroeDto })
