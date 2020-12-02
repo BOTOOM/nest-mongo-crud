@@ -1,4 +1,4 @@
-import { Controller, Post, Get, Put, Delete, Param, Body } from '@nestjs/common';
+import { Controller, Post, Get, Put, Delete, Param, Body, Query } from '@nestjs/common';
 import { HeroesService } from './heroes.service';
 import { ApiBody, ApiConsumes, ApiProperty, ApiTags } from '@nestjs/swagger';
 import { CreateHeroeDto } from './dto/create-heroe.dto';
@@ -19,6 +19,11 @@ export class HeroesController {
     @Get('GetById:idRegistro')
     getById( @Param('idRegistro') id: string ) {
         return this.heroesService.getById(id)
+    }
+
+    @Get('GetOne')
+    getOne( @Query('Campo') Campo: string,@Query('Valor') Valor: string, ) {
+        return this.heroesService.getOne(Campo,Valor)
     }
 
     // @ApiBody({ type: CreateHeroeDto })

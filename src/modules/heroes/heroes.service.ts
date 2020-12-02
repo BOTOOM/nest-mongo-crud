@@ -20,4 +20,10 @@ export class HeroesService {
     async getById(idRegistro: string): Promise<Heroes> {
         return await this.heroeModel.findById(idRegistro).exec()
     }
+
+    async getOne(campo, valor): Promise<Heroes> {
+        let obj = {}
+        obj[campo] = valor
+        return await this.heroeModel.findOne( obj ).exec();
+    }
 }
