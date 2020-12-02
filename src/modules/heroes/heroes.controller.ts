@@ -1,8 +1,9 @@
 import { Controller, Post, Get, Put, Delete, Param, Body } from '@nestjs/common';
+import { HeroesService } from './heroes.service';
 
 @Controller('heroes')
 export class HeroesController {
-    constructor() {
+    constructor( private readonly heroesService: HeroesService ) {
 
     }
 
@@ -15,7 +16,8 @@ export class HeroesController {
     }
 
     @Post()
-    post(@Body() datos: any) {
+    post(@Body() datosHeroe: any) {
+        return this.heroesService.post(datosHeroe)
     }
 
     @Put(':idRegistro')
