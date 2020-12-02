@@ -6,7 +6,7 @@ import { HeroesModule } from './modules/heroes/heroes.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost:27018/nest_prueba'),
+    MongooseModule.forRoot('mongodb://localhost:27018/nest_prueba', { useFindAndModify: false }),
      HeroesModule],
   controllers: [AppController],
   providers: [AppService],

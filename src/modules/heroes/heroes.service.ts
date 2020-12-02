@@ -26,4 +26,14 @@ export class HeroesService {
         obj[campo] = valor
         return await this.heroeModel.findOne( obj ).exec();
     }
+
+    async update(idRegistro: string, updateHeroeDto: CreateHeroeDto): Promise<Heroes> {
+        const herie = await this.heroeModel.findById(idRegistro).exec();
+
+        if (!herie._id) {
+            console.log('todo not found');
+        }
+        await this.heroeModel.findByIdAndUpdate(idRegistro, updateHeroeDto).exec()
+        return await this.heroeModel.findById(idRegistro).exec() 
+    }
 }

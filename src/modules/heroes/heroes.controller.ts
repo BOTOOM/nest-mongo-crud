@@ -1,6 +1,6 @@
 import { Controller, Post, Get, Put, Delete, Param, Body, Query } from '@nestjs/common';
 import { HeroesService } from './heroes.service';
-import { ApiBody, ApiConsumes, ApiProperty, ApiTags } from '@nestjs/swagger';
+import { ApiTags } from '@nestjs/swagger';
 import { CreateHeroeDto } from './dto/create-heroe.dto';
 
 
@@ -33,11 +33,12 @@ export class HeroesController {
     }
 
     @Put(':idRegistro')
-    put( @Param('idRegistro') id: string, @Body() datos: any ) {
+    put( @Param('idRegistro') id: string, @Body() updateHeroeDto: CreateHeroeDto ) {
+        return this.heroesService.update(id,updateHeroeDto)
     }
 
     @Delete(':idRegistro')
-    delete( @Param('idRegistro') id: string ) {
+    delete( @Param('idRegistro') id: string,  ) {
     }
 
 }
