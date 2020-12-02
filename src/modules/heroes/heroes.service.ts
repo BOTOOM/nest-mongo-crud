@@ -8,8 +8,12 @@ import { Heroes } from './schemas/heroe.schema';
 export class HeroesService {
     constructor(@InjectModel(Heroes.name) private readonly heroeModel: Model<Heroes>) {}
 
-    post(createHeroeDto: CreateHeroeDto): Promise<Heroes> {
+    async post(createHeroeDto: CreateHeroeDto): Promise<Heroes> {
         const createdRubro = new this.heroeModel(createHeroeDto);
         return createdRubro.save();
     }
+
+    async findAll(): Promise<Heroes[]> {
+        return this.heroeModel.find().exec();
+      }
 }

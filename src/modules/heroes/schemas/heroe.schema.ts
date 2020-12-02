@@ -3,8 +3,8 @@ import { Document } from 'mongoose';
 
 @Schema({ collection: 'heroes' })
 export class Heroes extends Document {
-    @Prop()
-    _id: String
+    // @Prop()
+    // _id: String
 
     @Prop(raw({
         nombre: { type: String },
@@ -13,13 +13,13 @@ export class Heroes extends Document {
         activo: { type: Boolean },
       }))
       casa: Record<string, any>;
-    @Prop(raw({
+    @Prop(raw([{
       mortal: { type: Number, },
       nombre: { type: String },
       descripcion: { type: String },
       fechaCreacion: { type: Date, default:  new Date()},
       activo: { type: Boolean },
-    }))
+    }]))
     poder: Record<string, any>[];
     
     @Prop()
