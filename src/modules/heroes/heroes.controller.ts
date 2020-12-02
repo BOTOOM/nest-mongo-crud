@@ -39,6 +39,7 @@ export class HeroesController {
 
     @Delete(':idRegistro')
     delete( @Param('idRegistro') id: string,  ) {
+        return this.heroesService.delete(id)
     }
 
 }

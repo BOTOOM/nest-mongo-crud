@@ -36,4 +36,9 @@ export class HeroesService {
         await this.heroeModel.findByIdAndUpdate(idRegistro, updateHeroeDto).exec()
         return await this.heroeModel.findById(idRegistro).exec() 
     }
+
+    async delete(idRegistro: string): Promise<Object> {
+        await this.heroeModel.findByIdAndRemove(idRegistro).exec()
+        return { message: `el registro ${idRegistro} se ha eliminado exitosamente` }
+    }
 }
