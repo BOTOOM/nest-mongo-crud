@@ -1,7 +1,7 @@
 import { Prop, raw, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-@Schema({ collection: 'heroes' })
+@Schema({ collection: process.env.COLLECTION_MONGO })
 export class Heroes extends Document {
     // @Prop()
     // _id: String
